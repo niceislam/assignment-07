@@ -31,7 +31,11 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: [
-            CustomTextfield(),
+            CustomTextfield(
+              onchanged: (v) {
+                controller.onsearch(value: v);
+              },
+            ),
             SizedBox(height: 10),
             Expanded(
               child: Obx(
@@ -41,11 +45,12 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.white,
                         child: ShimmerContainer(),
                       )
-                    : ListView.builder(
+                    : controller.SearchData.isNotEmpty
+                    ? ListView.builder(
                         shrinkWrap: true,
-                        itemCount: controller.QuoteData.length,
+                        itemCount: controller.SearchData.length,
                         itemBuilder: (context, index) {
-                          final item = controller.QuoteData[index];
+                          final item = controller.SearchData[index];
                           return QuoteCard(
                             iconConColor: NoteColors
                                 .colorList[index % NoteColors.colorList.length],
@@ -53,6 +58,12 @@ class HomeScreen extends StatelessWidget {
                             subtitle: item.author,
                           );
                         },
+                      )
+                    : Center(
+                        child: Text(
+                          "Data Not Found",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
                       ),
               ),
             ),

@@ -33,7 +33,14 @@ class QuoteApi {
           "Data Loading Failed",
           backgroundColor: Colors.red,
         );
-      } else {}
+      } else {
+        Get.snackbar(
+          colorText: Colors.white,
+          "Massage",
+          "Something Went Wrong",
+          backgroundColor: Colors.red,
+        );
+      }
     } catch (error) {
       log("=====Error: $error");
     }
