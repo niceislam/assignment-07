@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
+import 'app/modules/home/view/screen/home_screen/bottom_page/bottom_0ther/widget/childName_shimmer.dart';
 import 'app/modules/home/view/screen/home_screen/home_screen.dart';
 
 void main() {
